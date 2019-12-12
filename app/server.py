@@ -56,8 +56,9 @@ async def homepage(request):
 
 @app.route('/download', methods=['POST'])
 async def download(request):
-    url = await request.form()['url']
-    dest = awaitrequest.form()['dest']
+    form = await request.form()
+    url = form['url']
+    dest = form['dest']
     download_file(url, dest)
 
 @app.route('/analyze', methods=['POST'])
