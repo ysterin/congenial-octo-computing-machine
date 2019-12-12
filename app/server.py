@@ -54,6 +54,11 @@ async def homepage(request):
     html_file = path / 'view' / 'index.html'
     return HTMLResponse(html_file.open().read())
 
+@app.route('/download', methods=['POST'])
+async def download(request):
+    url = await request.form()['url']
+    dest = awaitrequest.form()['dest']
+    download_file(url, dest)
 
 @app.route('/analyze', methods=['POST'])
 async def analyze(request):
